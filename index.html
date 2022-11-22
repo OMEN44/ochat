@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OMEN project</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/chat.css">
+    <link rel="stylesheet" href="style/chatSelector.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!--    libraries-->
+    <script src="libraries/sockjs.js"></script>
+    <script src="libraries/stomp.js"></script>
+    <script src="libraries/crypto-js.js"></script>
+    <script src="libraries/jquery.js"></script>
+</head>
+<body>
+    <div class="nav" id="topNav">
+        <a href="#chat" class="active">Chat</a>
+        <a href="#leaveGroup">Leave Group</a>
+        <a href="#groups" onclick="switchPage(`selector`)">Groups</a>
+        <a href="#logout">Logout</a>
+        <a id="light-button" onclick="lightMode()">Light mode</a>
+        <a class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+
+<!--    Main content div-->
+    <div id="content" class="content">
+<!--        login page-->
+        <div id="login" class="identifier hide">
+            <div class="title-div">
+                <h2>Login</h2>
+            </div>
+            <div class="login-canvas">
+                <form class="login-form">
+                    <div class="login-input-container">
+                        <input class="input" placeholder="Username" id="username" type="text">
+                        <input class="input" placeholder="Password" id="password" type="password">
+                        <p id="login-status"></p>
+                    </div>
+                    <div class="login-button-container">
+                        <button class="button" id="login-btn" type="submit">Login</button>
+                        <button class="button" id="create-acc" type="button">Create Account</button>
+                        <!--<button class="button" id="tc" type="button">
+                            <input type="checkbox">
+                            <a href="http://scam.com">Terms and conditions</a>
+                        </button>-->
+                        <button class="button" id="forgot-pass" type="button">Forgot Password</button>
+                    </div>
+                </form>
+                <div class="change-log">
+                    <p>Change Log:</p>
+                </div>
+            </div>
+        </div>
+<!--        Chat selector-->
+        <div id="chat-selector" class="identifier hide">
+            <div class="chat-header">
+                <div class="title-div">
+                    <h2>Where would you like to go?</h2>
+                </div>
+                <form class="chat-search" name="chat-search">
+                    <input id="chat-input" autofocus class="input" type="text" placeholder="Chat name">
+                    <button id="chat-search" class="button" type="submit">Search</button>
+                    <button id="chat-create" class="button" type="button">Create Chat</button>
+                    <button id="chat-refresh" class="button" type="button">Refresh</button>
+                </form>
+                <div id="status" class="status">
+<!--                    <p>Chat status</p>-->
+                </div>
+            </div>
+            <div id="chats-canvas" class="chats-canvas">
+            </div>
+        </div>
+
+<!--        chat page-->
+        <div id="chat" class="identifier hide">
+            <div class="chat-title title-div">
+                <h2 id="title">Title</h2>
+                <input class="input" placeholder="Invite user" id="invite" type="text">
+                <button id="invite-button" class="button" type="submit">Invite</button>
+                <button id="exit-chat" class="button" type="button">Exit</button>
+            </div>
+            <div id="message-canvas" class="message-canvas">
+
+            </div>
+            <form id="message-controller" class="input-div" name="message-sender">
+                <input autofocus class="message-input" id="input-bar" type="text" autoFocus>
+                <button class="message-button" id="send" type="submit">Send</button>
+            </form>
+        </div>
+
+    </div>
+
+
+    <div id="status-div" class="connection-status fade-in">
+        <p id="status-message">Connecting...</p>
+    </div>
+    <script src="js/switchPage.js" onload="switchPage(`login`)"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/chat.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/chatSelector.js"></script>
+    <script src="websockets.js" onload="connect()"></script>
+</body>
+</html>
