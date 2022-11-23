@@ -2,13 +2,13 @@ let stompClient, session, chatId;
 let connected = false;
 let loggedInUser = null;
 
-const serverEndPoint = 'https://omenchat.access.ly:4444/omen-chat';
+const serverEndPoint = 'http://omenchat.access.ly:4444/omen-chat';
 
 //connect to the websocket
 const connect = () => {
     stompClient = Stomp.over(new SockJS(serverEndPoint))
-    console.log("url:");
-    console.log(stompClient.wss._transport);
+    console.log("url1:");
+    console.log(stompClient);
     stompClient.connect(
         {},
         onConnected,
