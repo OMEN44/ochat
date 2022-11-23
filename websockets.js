@@ -2,7 +2,7 @@ let stompClient, session, chatId;
 let connected = false;
 let loggedInUser = null;
 
-const serverEndPoint = 'http://localhost:4444/omen-chat';
+const serverEndPoint = 'https://omenchat.access.ly:4444/omen-chat';
 
 //connect to the websocket
 const connect = () => {
