@@ -7,6 +7,7 @@ const serverEndPoint = 'https://omenchat.access.ly:4444/omen-chat';
 //connect to the websocket
 const connect = () => {
     stompClient = Stomp.over(new SockJS(serverEndPoint))
+    console.log(stompClient.ws._transport.url);
     stompClient.connect(
         {},
         onConnected,
@@ -22,7 +23,7 @@ const connect = () => {
 const onConnected = () => {
     //get session Id
     let url = stompClient.ws._transport.url;
-    url = url.replace(serverEndPoint.replace("http", "ws") + "/", "");
+    url = url.replace(serverEndPoint.replace("http", "wss") + "/", "");
     url = url.replace("/websocket", "");
     url = url.replace(/^[0-9]+\//, "");
     session = url;
