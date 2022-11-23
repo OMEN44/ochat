@@ -8,7 +8,7 @@ const serverEndPoint = 'https://omenchat.access.ly:4444/omen-chat';
 const connect = () => {
     stompClient = Stomp.over(new SockJS(serverEndPoint))
     console.log("url:");
-    console.log(stompClient.ws._transport.url);
+    console.log(stompClient.ws._transport);
     stompClient.connect(
         {},
         onConnected,
